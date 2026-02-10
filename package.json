@@ -1,4 +1,36 @@
 {
-  "name": "survey-backend",
-  "packageManager": "yarn@4.12.0"
+  "packageManager": "yarn@4.12.0",
+  "name": "vukory-survey-backend",
+  "version": "1.0.0",
+  "description": "Backend for cookie banner study conducted on SVGO.dev.",
+  "scripts": {
+    "dev": "cross-env VUKORY_SECRET=secret NODE_ENV=development nodemon src/index.js",
+    "start": "cross-env NODE_ENV=production node src/index.js",
+    "lint": "eslint .",
+    "format": "eslint --fix .",
+    "typecheck": "tsc",
+    "qa": "yarn run lint && yarn run typecheck"
+  },
+  "author": "Vukory <hi@vukory.art>",
+  "license": "UNLICENSED",
+  "type": "module",
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1",
+    "altcha-lib": "^1.4.1",
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "@types/cors": "^2",
+    "@types/express": "^5.0.6",
+    "cross-env": "^10.1.0",
+    "eslint": "^9.39.2",
+    "eslint-plugin-import": "^2.32.0",
+    "globals": "^17.3.0",
+    "nodemon": "^3.1.11",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
 }
