@@ -156,6 +156,7 @@ function mapSubmission(req, data, verified) {
       userAgent: req.headers['user-agent'],
       referer: req.headers['referer'],
     },
+    date: new Date(),
     verified,
   };
 }
