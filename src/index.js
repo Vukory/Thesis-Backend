@@ -4,9 +4,10 @@ import { createChallenge, verifySolution } from 'altcha-lib';
 import cors from 'cors';
 import express from 'express';
 import { getConfig } from './config.js';
-import { LIKERT, MULTIPLE_CHOICE, SINGLE_CHOICE, TEXT_AREA, TEXT_FIELD } from './json-schema.js';
+import { LIKERT, multipleChoiceSchema, singleChoiceSchema, TEXT_AREA, TEXT_FIELD } from './json-schema.js';
 import { getPages } from './pages.js';
 import { saveSubmission } from './submission.js';
+import survey from './survey.json' with {type: 'json'};
 
 const config = getConfig();
 const pages = getPages(config);
@@ -27,28 +28,28 @@ addFormats(ajv);
 const schema = {
   type: 'object',
   properties: {
-    ageBand: SINGLE_CHOICE,
-    techExpertise: SINGLE_CHOICE,
-    visitFrequency: SINGLE_CHOICE,
-    bannerEmotion: MULTIPLE_CHOICE,
+    ageBand: singleChoiceSchema(survey.ageBand),
+    techExpertise: singleChoiceSchema(survey.techExpertise),
+    visitFrequency: singleChoiceSchema(survey.visitFrequency),
+    bannerEmotion: multipleChoiceSchema(survey.bannerEmotion, true),
     'bannerEmotion-other': TEXT_FIELD,
-    bannerImpression: MULTIPLE_CHOICE,
+    bannerImpression: multipleChoiceSchema(survey.bannerImpression, true),
     'bannerImpression-other': TEXT_FIELD,
     bannerAppeal: LIKERT,
     bannerComplexity: LIKERT,
     bannerUnderstanding: LIKERT,
     bannerTrustEffect: LIKERT,
-    bannerCompliance: SINGLE_CHOICE,
-    bannerDecisionFactors: MULTIPLE_CHOICE,
+    bannerCompliance: singleChoiceSchema(survey.bannerCompliance),
+    bannerDecisionFactors: multipleChoiceSchema(survey.bannerDecisionFactors, true),
     'bannerDecisionFactors-other': TEXT_FIELD,
     bannerIntegration: LIKERT,
     websiteImpression: LIKERT,
     websiteTrust: LIKERT,
-    websiteTone: MULTIPLE_CHOICE,
+    websiteTone: multipleChoiceSchema(survey.websiteTone, true),
     'websiteTone-other': TEXT_FIELD,
     generalBannerAttitude: LIKERT,
     generalBannerImpact: LIKERT,
-    blockingTools: MULTIPLE_CHOICE,
+    blockingTools: multipleChoiceSchema(survey.blockingTools, true),
     'blockingTools-other': TEXT_FIELD,
     openFeedback: TEXT_AREA,
     email: {
