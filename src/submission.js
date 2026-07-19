@@ -48,6 +48,7 @@ import { DatabaseSync } from 'node:sqlite';
  *   completed the captcha. We still accept submissions if the captcha is not
  *   completed, but set `verified` to false to denote that it is less
  *   trustworthy.
+ * @property {Date} date
  * 
  * @typedef {object} UserData
  * @property {string=} ip
