@@ -4,7 +4,7 @@
 
 /** Scale of 1 to 5. */
 export const LIKERT = /** @type {const} */ ({
-  type: 'number',
+  type: 'integer',
   minimum: 1,
   maximum: 5,
   nullable: true
