@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import Ajv from 'ajv';
 import addFormats from 'ajv-formats';
 import { createChallenge, verifySolution } from 'altcha-lib';

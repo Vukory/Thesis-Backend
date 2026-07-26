@@ -1,13 +1,16 @@
-FROM node:24.13.1-trixie-slim
-LABEL maintainer="merjembajramovic8@gmail.com"
+FROM node:24.18.0-trixie-slim
+LABEL org.opencontainers.image.authors="merjembajramovic8@gmail.com"
 
-WORKDIR /home/node/app
+ENV NODE_ENV=production
 
-# Copy context to container and install production dependencies.
-COPY . .
+WORKDIR /app
+COPY .yarnrc.yml README.md package.json yarn.lock /app/
+COPY src /app/src
 RUN corepack enable && \
-    yarn workspaces focus --all --production
+  corepack prepare --activate && \
+  yarn workspaces focus --all --production && \
+  npm install -g .
 
 USER 1000
-
-CMD ["node", "src/index.js"]
+EXPOSE 8081
+CMD ["thesis-backend"]
