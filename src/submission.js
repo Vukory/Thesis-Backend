@@ -39,7 +39,7 @@ import { DatabaseSync } from 'node:sqlite';
  *   email?: string,
  *   utm_content?: 'a' | 'b' | 'c',
  * }} SubmissionData
- * 
+ *
  * @typedef {object} SubmissionRecord
  * @property {SubmissionData} form
  * @property {UserData} user
@@ -49,7 +49,7 @@ import { DatabaseSync } from 'node:sqlite';
  *   completed, but set `verified` to false to denote that it is less
  *   trustworthy.
  * @property {Date} date
- * 
+ *
  * @typedef {object} UserData
  * @property {string=} ip
  *   IP of the user. We mostly just want to check if certain IPs seem to be
@@ -76,7 +76,7 @@ const database = new DatabaseSync(DB_PATH);
 initialize(database);
 
 /**
- * @param {DatabaseSync} db 
+ * @param {DatabaseSync} db
  */
 function initialize(db) {
   db.exec(`
@@ -89,7 +89,7 @@ function initialize(db) {
 }
 
 /**
- * @param {SubmissionRecord} data 
+ * @param {SubmissionRecord} data
  */
 export async function saveSubmission(data) {
   const uuid = randomUUID();
@@ -99,7 +99,7 @@ export async function saveSubmission(data) {
 
 /**
  * @param {import('node:crypto').UUID} uuid
- * @param {SubmissionRecord} data 
+ * @param {SubmissionRecord} data
  */
 async function saveJson(uuid, data) {
   await fs.mkdir(JSON_DIR, { recursive: true });
@@ -111,7 +111,7 @@ async function saveJson(uuid, data) {
 
 /**
  * @param {import('node:crypto').UUID} uuid
- * @param {SubmissionRecord} data 
+ * @param {SubmissionRecord} data
  * @returns {import('node:sqlite').StatementResultingChanges}
  */
 function saveSql(uuid, data) {
