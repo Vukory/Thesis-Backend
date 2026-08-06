@@ -23,8 +23,8 @@ export const TEXT_AREA = /** @type {const} */ ({
 });
 
 /**
- * @param {string[]} options 
- * @param {boolean} other 
+ * @param {string[]} options
+ * @param {boolean} other
  * @returns {any}
  */
 export function multipleChoiceSchema(options, other) {
@@ -33,20 +33,20 @@ export function multipleChoiceSchema(options, other) {
     maxItems: other ? options.length + 1 : options.length,
     uniqueItems: true,
     items: {
-      enum: other ? [...options, 'other'] : options, 
+      enum: other ? [...options, 'other'] : options,
     },
     nullable: true
   }
 }
 
 /**
- * @param {string[]} options 
+ * @param {string[]} options
  * @returns {any}
  */
 export function singleChoiceSchema(options) {
   return {
     type: 'string',
-    enum: options, 
+    enum: options,
     nullable: true
   }
 }

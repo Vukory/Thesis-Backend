@@ -9,7 +9,7 @@
 
 /**
  * @typedef {'production'|'development'} Environment
- * 
+ *
  * @typedef {object} Config
  * @property {number} port Which port to run the webserver on.
  * @property {string} baseUrl
